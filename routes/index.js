@@ -1,5 +1,6 @@
 var express = require('express');
 var passport = require('passport');
+var LocalStrategy = require('passport-local');
 var Account = require('../models/account.js');
 var router = express.Router();
 
@@ -28,8 +29,21 @@ router.get('/login', function(req, res) {
     res.render('login', { user : req.user });
 });
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
-    res.redirect('/');
+router.post('/login', function(req, res) {
+	passport.authenticate('local', function(err, user, info) {
+      if (err) { return next(err); }
+      if (!user) {
+		return res.render('login', { info: 'Invalid username/password combination.' }); 
+	  }
+	  failedLogin = false;
+      req.logIn(user, function(err) {
+        if (err) { return next(err); }
+        return res.redirect('/');
+      });
+    }) (req, res, function(err) {
+      console.log(err);
+	  res.redirect('/login');
+	});
 });
 
 router.get('/logout', function(req, res) {
