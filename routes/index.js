@@ -51,8 +51,18 @@ router.get('/logout', function(req, res) {
     res.redirect('/');
 });
 
-router.get('/ping', function(req, res){
-    res.status(200).send("pong!");
+router.get('/home', function(req, res) {
+	validateUser(req, res, function(req, res) {
+	  res.render('home', { user : req.user });
+	});
 });
+
+function validateUser(req, res, next) {
+	if (req.user) {
+	  next(req, res);
+	} else {
+	  res.redirect('/login');
+	}
+}
 
 module.exports = router;
