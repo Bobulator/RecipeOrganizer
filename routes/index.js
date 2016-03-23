@@ -20,7 +20,7 @@ router.post('/register', function(req, res) {
         }
 
         passport.authenticate('local')(req, res, function () {
-            res.redirect('/');
+            res.redirect('/home');
         });
     });
 });
@@ -38,7 +38,7 @@ router.post('/login', function(req, res) {
 	  failedLogin = false;
       req.logIn(user, function(err) {
         if (err) { return next(err); }
-        return res.redirect('/');
+        return res.redirect('/home');
       });
     }) (req, res, function(err) {
       console.log(err);
@@ -57,6 +57,11 @@ router.get('/home', function(req, res) {
 	});
 });
 
+router.get('/home', function(req, res) {
+	res.render('home', { });
+});
+
+// Helper method to make sure users are logged in
 function validateUser(req, res, next) {
 	if (req.user) {
 	  next(req, res);
