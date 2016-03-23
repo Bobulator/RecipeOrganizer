@@ -1,2 +1,3 @@
-[ ] Make the login, register, and unauthorized user pages more presentable (need to establish a look and feel for the whole site
-                                                                            before doing this)
+[ ] Make the login and register pages more presentable (need to establish a look and feel for the whole site before doing this)
+[ ] Make usernames case sensitive (so Bob and bob would be considered the same user). Delete duplicate usernames from the database.
+[ ] Update current view files to reference local installations of Jquery and Angular (this will help reduce overall bandwidth)
