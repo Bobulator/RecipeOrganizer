@@ -57,8 +57,28 @@ router.get('/home', function(req, res) {
 	});
 });
 
-router.get('/home', function(req, res) {
-	res.render('home', { });
+router.get('/shopping', function(req, res) {
+	validateUser(req, res, function(req, res) {
+	  res.render('shopping', { user : req.user });
+	});
+});
+
+router.get('/search', function(req, res) {
+	validateUser(req, res, function(req, res) {
+	  res.render('search', { user : req.user });
+	});
+});
+
+router.get('/create', function(req, res) {
+	validateUser(req, res, function(req, res) {
+	  res.render('create', { user : req.user });
+	});
+});
+
+router.get('/help', function(req, res) {
+	validateUser(req, res, function(req, res) {
+	  res.render('help', { user : req.user });
+	});
 });
 
 // Helper method to make sure users are logged in

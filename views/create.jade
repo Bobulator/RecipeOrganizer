@@ -1,20 +1,20 @@
 extends ./homelayout.jade
     
 block title
-  title Home
+  title Create Recipe
 
 block navbar
   nav.navbar.navbar-inverse(role='navigation', style='padding-left:130px;')
     ul.nav.navbar-nav
-      li.active
-        a(href='/home')
-          | Home
-          span.sr-only (current)
+      li
+        a(href='/home') Home
       li
         a(href='/shopping') Shopping List
       li
         a(href='/search') Advanced Search
-      li
-        a(href='/create') Create Recipe
+      li.active
+        a(href='/create')
+          | Create Recipe
+          span.sr-only (current)
       li
         a(href='/help') Help

@@ -1,17 +1,17 @@
 extends ./homelayout.jade
     
 block title
-  title Home
+  title Shopping List
 
 block navbar
   nav.navbar.navbar-inverse(role='navigation', style='padding-left:130px;')
     ul.nav.navbar-nav
-      li.active
-        a(href='/home')
-          | Home
-          span.sr-only (current)
       li
-        a(href='/shopping') Shopping List
+        a(href='/home') Home
+      li.active
+        a(href='/shopping') 
+          | Shopping List
+          span.sr-only (current)
       li
         a(href='/search') Advanced Search
       li
