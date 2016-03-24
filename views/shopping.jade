@@ -3,18 +3,8 @@ extends ./homelayout.jade
 block title
   title Shopping List
 
-block navbar
-  nav.navbar.navbar-inverse(role='navigation', style='padding-left:130px;')
-    ul.nav.navbar-nav
-      li
-        a(href='/home') Home
-      li.active
-        a(href='/shopping') 
-          | Shopping List
-          span.sr-only (current)
-      li
-        a(href='/search') Advanced Search
-      li
-        a(href='/create') Create Recipe
-      li
-        a(href='/help') Help
+block shoppinglink
+  li.active
+    a(href='/shopping') 
+      | Shopping List
+      span.sr-only (current)

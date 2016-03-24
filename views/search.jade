@@ -3,18 +3,8 @@ extends ./homelayout.jade
 block title
   title Advanced Search
 
-block navbar
-  nav.navbar.navbar-inverse(role='navigation', style='padding-left:130px;')
-    ul.nav.navbar-nav
-      li
-        a(href='/home') Home
-      li
-        a(href='/shopping') Shopping List
-      li.active
-        a(href='/search') 
-          | Advanced Search
-          span.sr-only (current)
-      li
-        a(href='/create') Create Recipe
-      li
-        a(href='/help') Help
+block searchlink
+  li.active
+    a(href='/search') 
+      | Advanced Search
+      span.sr-only (current)

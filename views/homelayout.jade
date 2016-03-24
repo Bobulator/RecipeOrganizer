@@ -25,13 +25,18 @@ html(lang='en')
     block navbar
       nav.navbar.navbar-inverse(role='navigation', style='padding-left:130px;')
         ul.nav.navbar-nav
-          li
-            a(href='/home') Home
-          li
-            a(href='/shopping') Shopping List
-          li
-            a(href='/search') Advanced Search
-          li
-            a(href='/create') Create Recipe
-          li
-            a(href='/help') Help
+          block homelink
+            li
+              a(href='/home') Home
+          block shoppinglink
+            li
+              a(href='/shopping') Shopping List
+          block searchlink
+            li
+              a(href='/search') Advanced Search
+          block createlink
+            li
+              a(href='/create') Create Recipe
+          block helplink
+            li
+              a(href='/help') Help
