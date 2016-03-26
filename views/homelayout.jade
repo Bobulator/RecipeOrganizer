@@ -15,7 +15,9 @@ html(lang='en')
       script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
   body
-    h1(style='padding-left:130px;') Recipe Organizer
+    h1
+      .col-sm-1
+      | Recipe Organizer
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -42,3 +44,5 @@ html(lang='en')
       ul.nav.navbar-nav.navbar-right
         li
           a(href='/logout') Sign Out
+
+  block content
