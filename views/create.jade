@@ -8,3 +8,27 @@ block createlink
     a(href='/create')
       | Create Recipe
       span.sr-only (current)
+
+block content
+  h2
+    .col-sm-2
+    | Create Recipe
+ 
+  div
+    form.form-horizontal
+        .form-group
+          label.col-sm-2.control-label(for='recipeTitle') Title
+          .col-sm-4
+            input#recipeTitle.form-control(type='title', placeholder='Give your recipe a title')
+        .form-group
+          label.col-sm-2.control-label(for='recipeDescription') Description
+          .col-sm-4
+            input#recipeDescription.form-control(type='description', placeholder='Describe your recipe')
+        .form-group
+          label.col-sm-2.control-label(for='recipeTheme') Theme
+          .col-sm-4
+            input#recipeThem.form-control(type='theme', placeholder='Give your recipe a theme')
+        .form-group
+          .col-sm-offset-2.col-sm-4
+            .pull-right
+              button.btn.btn-default(type='submit') Submit
