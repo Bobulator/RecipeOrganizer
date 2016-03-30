@@ -1,10 +1,11 @@
 BUGS:
-[X] In the create recipe page, when you click on the add ingredient button the first time the next ingredient gets displayed right below the previous one without an padding. FIXED: by cBacon
+[ ] In the create recipe page the remove ingredient button currently doesn't work.
+[X] In the create recipe page, when you click on the add ingredient button the first time the next ingredient gets displayed right below the previous one without an padding. FIXED: cBacon
 
 Misc:
 [ ] Make the login and register pages more presentable (need to establish a look and feel for the whole site before doing this)
 [ ] Make usernames case sensitive (so Bob and bob would be considered the same user). Delete duplicate usernames from the database.
 [ ] Update current view files to reference local installations of Jquery and Angular (this will help reduce overall latency).
-[ ] In the create recipe page, change the units input form into a dropdown menu.
-[ ] In the create recipe page, find a better plus glyphicon for the add ingredient button. 
+[X] In the create recipe page, change the units input form into a dropdown menu. FIXED: cBacon
+[X] In the create recipe page, find a better plus glyphicon for the add ingredient button. FIXED: cBacon
 [ ] In the create recipe page, fill the top-right of the page with an image placeholder.

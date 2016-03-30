@@ -29,7 +29,7 @@ block content
         .form-group
           label.col-sm-2.control-label(for='recipeTheme') Theme
           .col-sm-4
-            input#recipeThem.form-control(type='theme', placeholder='Give your recipe a theme')
+            input#recipeTheme.form-control(type='theme', placeholder='Give your recipe a theme')
   .row
     .col-md-offset-2.col-md-4
       .row
@@ -40,29 +40,35 @@ block content
           label Amount
         .col-md-2
           label Unit
-      form.form-group
+      form#ingredientForm.form-group(method='post')
         .row
           .col-md-1
-            button.btn.btn-default#addIngredientButton(type='button')
+            button.btn.btn-default.addIngredientButton(type='button')
               span.glyphicon.glyphicon-plus
           .col-md-7
               input.form-control(type='text', name='ingredient[0].ingredient', placeholder='Ingredient')
           .col-md-2
               input.form-control(type='text', name='ingredient[0].amount', placeholder='#')
           .col-md-2
-              input.form-control(type='text', name='ingredient[0].unit', placeholder='Units')
+              select.form-control
+                option(value='cup') Cup
+                option(value='ounce') Ounce
+                option(value='millimeter') Millimeter
        
       #ingredientTemplate.form-group.hide
         .row
           .col-md-1
-            button.btn.btn-default#removeIngredientButton(type='button')
+            button.btn.btn-default.removeIngredientButton(type='button')
               span.glyphicon.glyphicon-minus
-          .col-md-7
+          .col-md-7#ingredientCol
             input.form-control(type='text', name='ingredient', placeholder='Ingredient')
-          .col-md-2
+          .col-md-2#amountCol
             input.form-control(type='text', name='amount', placeholder='#')
-          .col-md-2
-            input.form-control(type='text', name='unit', placeholder='Units')
+          .col-md-2#unitCol
+            select.form-control(name='unit')
+              option(value='cup') Cup
+              option(value='ounce') Ounce
+              option(value='millimeter') Millimeter
 
   .row
     .col-sm-offset-2.col-sm-4
