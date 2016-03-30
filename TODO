@@ -4,7 +4,7 @@ BUGS:
 
 Misc:
 [ ] Make the login and register pages more presentable (need to establish a look and feel for the whole site before doing this)
-[ ] Make usernames case sensitive (so Bob and bob would be considered the same user). Delete duplicate usernames from the database.
+[X] Make usernames case sensitive (so Bob and bob would be considered the same user). Delete duplicate usernames from the database. FIXED: cBacon (Note: only the registration page is case-insensitive. When logging in you still need to use the correct username)
 [ ] Update current view files to reference local installations of Jquery and Angular (this will help reduce overall latency).
 [X] In the create recipe page, change the units input form into a dropdown menu. FIXED: cBacon
 [X] In the create recipe page, find a better plus glyphicon for the add ingredient button. FIXED: cBacon

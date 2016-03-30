@@ -14,7 +14,7 @@ router.get('/register', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
-    Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
+    Account.register(new Account({ username : req.body.username.toLowerCase() }), req.body.password, function(err, account) {
         if (err) {
             return res.render('register', {info: 'That username is already in use. Please choose another.'});
         }
@@ -31,9 +31,9 @@ router.get('/login', function(req, res) {
 
 router.post('/login', function(req, res) {
 	passport.authenticate('local', function(err, user, info) {
-      if (err) { return next(err); }
-      if (!user) {
-		return res.render('login', { info: 'Invalid username/password combination.' }); 
+    if (err) { return next(err); }
+    if (!user) {
+		  return res.render('login', { info: 'Invalid username/password combination.' }); 
 	  }
 	  failedLogin = false;
       req.logIn(user, function(err) {
