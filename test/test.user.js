@@ -7,7 +7,7 @@ describe('Account', function() {
 
     before(function(done) {
         db = mongoose.connect('mongodb://localhost/test');
-            done();
+        done();
     });
 
     after(function(done) {
