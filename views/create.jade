@@ -34,22 +34,22 @@ block content
     .col-md-offset-1.col-md-5
       .row
         .col-md-1
-        .col-md-5
+        .col-md-6
           label Ingredient
         .col-md-2
           label Amount
-        .col-md-4
+        .col-md-3
           label Unit
       form#ingredientForm.form-group(method='post')
         .row
           .col-sm-1
             button.btn.btn-default.addIngredientButton(type='button')
               span.glyphicon.glyphicon-plus
-          .col-md-5
+          .col-md-6
               input.form-control(type='text', name='ingredient[0].ingredient', placeholder='Ingredient')
           .col-md-2
               input.form-control(type='text', name='ingredient[0].amount', placeholder='#')
-          .col-md-4
+          .col-md-3
               select.form-control
                 option(value='cup') Cup
                 option(value='ounce') Ounce
@@ -60,18 +60,18 @@ block content
           .col-md-1
             button.btn.btn-default.removeIngredientButton(type='button')
               span.glyphicon.glyphicon-minus
-          .col-md-5#ingredientCol
+          .col-md-6#ingredientCol
             input.form-control(type='text', name='ingredient', placeholder='Ingredient')
           .col-md-2#amountCol
             input.form-control(type='text', name='amount', placeholder='#')
-          .col-md-4#unitCol
+          .col-md-3#unitCol
             select.form-control(name='unit')
               option(value='cup') Cup
               option(value='ounce') Ounce
               option(value='millimeter') Millimeter
 
   .row
-    .col-sm-offset-2.col-sm-4
+    .col-sm-offset-4.col-sm-2
       .pull-right
         button.btn.btn-default(type='submit') Submit
 
