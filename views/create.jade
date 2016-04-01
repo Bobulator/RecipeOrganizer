@@ -15,63 +15,102 @@ block content
   h2
     .col-sm-2
     | Create Recipe
- 
-  div
-    form.form-horizontal
-        .form-group
-          label.col-sm-2.control-label(for='recipeTitle') Title
-          .col-sm-4
-            input#recipeTitle.form-control(type='title', placeholder='Give your recipe a title')
-        .form-group
-          label.col-sm-2.control-label(for='recipeDescription') Description
-          .col-sm-4
-            input#recipeDescription.form-control(type='description', placeholder='Describe your recipe')
-        .form-group
-          label.col-sm-2.control-label(for='recipeTheme') Theme
-          .col-sm-4
-            input#recipeTheme.form-control(type='theme', placeholder='Give your recipe a theme')
-  .row
-    .col-md-offset-1.col-md-5
+  
+  .modal-body.row
+    // Left column
+    .col-md-5.col-md-offset-1
       .row
-        .col-md-1
-        .col-md-6
-          label Ingredient
-        .col-md-2
-          label Amount
-        .col-md-3
-          label Unit
-      form#ingredientForm.form-group(method='post')
-        .row
-          .col-sm-1
-            button.btn.btn-default.addIngredientButton(type='button')
-              span.glyphicon.glyphicon-plus
-          .col-md-6
-              input.form-control(type='text', name='ingredient[0].ingredient', placeholder='Ingredient')
-          .col-md-2
-              input.form-control(type='text', name='ingredient[0].amount', placeholder='#')
-          .col-md-3
-              select.form-control
-                option(value='cup') Cup
-                option(value='ounce') Ounce
-                option(value='millimeter') Millimeter
-       
-      #ingredientTemplate.form-group.hide
-        .row
-          .col-md-1
-            button.btn.btn-default.removeIngredientButton(type='button')
-              span.glyphicon.glyphicon-minus
-          .col-md-6#ingredientCol
-            input.form-control(type='text', name='ingredient', placeholder='Ingredient')
-          .col-md-2#amountCol
-            input.form-control(type='text', name='amount', placeholder='#')
-          .col-md-3#unitCol
-            select.form-control(name='unit')
-              option(value='cup') Cup
-              option(value='ounce') Ounce
-              option(value='millimeter') Millimeter
-
-  .row
-    .col-sm-offset-4.col-sm-2
-      .pull-right
-        button.btn.btn-default(type='submit') Submit
-
+        form#recipeForm(method='post')
+          .form-group.form-horizontal
+            .form-group
+              label.col-md-2.control-label(for='recipeTitle') Title
+              .col-md-10
+                input#recipeTitle.form-control(type='text', placeholder='Give your recipe a title')
+            .form-group
+              label.col-md-2.control-label(for='recipeDescription') Description
+              .col-md-10
+                input#recipeDescription.form-control(type='text', placeholder='Describe your recipe')
+            .form-group
+              label.col-md-2.control-label(for='recipeTheme') Theme
+              .col-md-10
+                input#recipeTheme.form-control(type='text', placeholder='Give your recipe a theme')
+          br
+          .form-group#ingredientsForm  
+            .form-group
+              .row
+                .col-md-2
+                .col-md-5
+                  label Ingredient
+                .col-md-2
+                  label Amount
+                .col-md-3
+                  label Unit
+            .form-group
+              .row
+                .col-md-1.col-md-offset-1
+                  button.btn.btn-default.addIngredientButton(type='button')
+                    span.glyphicon.glyphicon-plus
+                .col-md-5
+                  input.form-control(type='text', name='ingredient[0].ingredient', placeholder='Ingredient')
+                .col-md-2
+                  input.form-control(type'text', name='ingredient[0].amount', placeholder='#')
+                .col-md-3
+                  select.form-control
+                    option(value='cup') Cup
+                    option(value='ounce') Ounce
+                    option(value='millimeter') Millimeter
+            #ingredientTemplate.form-group.hide
+              .row
+                .col-md-1.col-md-offset-1
+                  button.btn.btn-default.removeIngredientButton(type='button')
+                    span.glyphicon.glyphicon-minus
+                .col-md-5#ingredientCol
+                  input.form-control(type='text', name='ingredient[0].ingredient', placeholder='Ingredient')
+                .col-md-2#amountCol
+                  input.form-control(type'text', name='ingredient[0].amount', placeholder='#')
+                .col-md-3#unitCol
+                  select.form-control
+                    option(value='cup') Cup
+                    option(value='ounce') Ounce
+                    option(value='millimeter') Millimeter
+          br
+          .form-group#instructionsForm
+            .form-group
+              .row
+                .col-md-2
+                .col-md-10
+                  label Instructions
+            .form-group
+              .row
+                .col-md-1
+                .col-md-1
+                  button.btn.btn-default.addInstructionButton(type='button')
+                    span.glyphicon.glyphicon-plus
+                .col-md-10
+                  input.form-control(type='text', name='instruction[0].instruction', placeholder='Type each step of your recipe')
+            #instructionTemplate.form-group.hide
+              .row
+                .col-md-1
+                .col-md-1
+                  button.btn.btn-default.removeInstructionButton(type='button')
+                    span.glyphicon.glyphicon-minus
+                .col-md-10
+                  input.form-control(type='text', name='instruction', placeholder='Type each step of your recipe')
+          br
+          .form-group#notesForm
+            .row
+              .col-md-2
+              .col-md-10
+                label Notes
+            .row
+              .col-md-2
+              .col-md-10
+                textarea.form-control(type='text', name='notes', rows='5', resize='vertical')
+          .form-group
+            .pull-right
+              button.btn.btn-default.btn-block(type='submit') Submit
+    // Right column
+    .col-md-5
+      .row
+    // Right padding
+    .col-md-1
