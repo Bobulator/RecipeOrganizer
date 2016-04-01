@@ -49,9 +49,7 @@ block content
               span.glyphicon.glyphicon-download
           .col-md-3.vertalign
             label Create Recipe
-        .row
-          .col-md-1
-          .col-md-9#createRecipe.collapse 
+          #createRecipe.collapse 
             | Some text.. 
         br
         .row
@@ -60,9 +58,7 @@ block content
               span.glyphicon.glyphicon-download
           .col-md-3.vertalign
             label Making a shopping list
-        .row
-          .col-md-1
-          .col-md-9#shoplist.collapse 
+          #shoplist.collapse 
             | Some text..
         br
         .row
@@ -71,9 +67,7 @@ block content
               span.glyphicon.glyphicon-download
           .col-md-3.vertalign
             label Other
-        .row
-          .col-md-1
-          .col-md-9#other.collapse 
+          #other.collapse 
             | Some text..       
           
 
