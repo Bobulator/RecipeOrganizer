@@ -3,6 +3,7 @@ BUGS:
 [X] In the create recipe page, when you click on the add ingredient button the first time the next ingredient gets displayed right below the previous one without an padding. FIXED: cBacon
 
 Misc:
+[ ] Move the .js sources and other dependencies to the bottom of each page so that the navbar loads faster.
 [ ] Make the login and register pages more presentable (need to establish a look and feel for the whole site before doing this)
 [X] Make usernames case sensitive (so Bob and bob would be considered the same user). Delete duplicate usernames from the database. FIXED: cBacon (Note: only the registration page is case-insensitive. When logging in you still need to use the correct username)
 [ ] Update current view files to reference local installations of Jquery and Angular (this will help reduce overall latency).
