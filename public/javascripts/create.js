@@ -40,11 +40,10 @@ $(document).ready(function() {
 
     $clone.find('[name="instruction"]').attr('name', 'instruction[' + instructionIndex + '].instruction');
   });
+  
   // When the remove button gets clicked remove the corresponding row
-  $('.removeIngredientButton').click(function() {
+  $('#ingredientsForm').on('click', '.removeIngredientButton', function() {
     console.log("In remove ingredient button");
-    var $row = $(this).parents('.form-group');
-    var index = $row.attr('data-ingredient-index');
-    $row.remove();
+    $(this).parent().parent().remove();
   });
 });
