@@ -19,9 +19,15 @@ $(document).ready(function() {
         
       // Update the name attributes with the new index
       $clone
-        .find('[name="ingredient"]').attr('name', 'ingredient[' + ingredientIndex + '].ingredient').end()
-        .find('[name="amount"]').attr('name', 'ingredient[' + ingredientIndex + '].amount').end()
-        .find('[name="unit"]').attr('name', 'ingredient[' + ingredientIndex + '].unit').end()
+        .find('[name="ingredient"]')
+          .attr('name', 'ingredients_ingredient')
+          .attr('disabled', false).end()
+        .find('[name="amount"]')
+          .attr('name', 'ingredients_amount')
+          .attr('disabled', false).end()
+        .find('[name="unit"]')
+          .attr('name', 'ingredients_unit')
+          .attr('disabled', false).end()
   });
 
   // Add button for instructions
@@ -35,10 +41,13 @@ $(document).ready(function() {
                    .clone()
                    .removeClass('hide')
                    .removeAttr('id')
+                   .removeAttr('disabled')
                    .attr('data-instruction-index', instructionIndex)
                    .insertBefore($template);
 
-    $clone.find('[name="instruction"]').attr('name', 'instruction[' + instructionIndex + '].instruction');
+    $clone.find('[name="instruction"]')
+      .attr('name', 'instructions_instruction')
+      .attr('disabled', false).end();
   });
   
   // When the remove ingredient button gets clicked remove the corresponding ingredient
