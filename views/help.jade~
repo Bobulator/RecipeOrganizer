@@ -80,6 +80,6 @@ block content
 
     // Right column
     .col-md-6
-      image#viewCreateRecipe This is an image 
+      image.viewCreateRecipe This is an image 
     // Right padding
     .col-md-1
