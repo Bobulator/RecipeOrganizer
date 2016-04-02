@@ -81,6 +81,10 @@ router.get('/help', function(req, res) {
 	});
 });
 
+router.post('/create', function(req, res) {
+  console.log(req.body);
+});
+
 // Helper method to make sure users are logged in
 function validateUser(req, res, next) {
 	if (req.user) {
