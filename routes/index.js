@@ -6,7 +6,8 @@ var Account = require('../models/account.js');
 var Recipe = require('../models/recipe.js');
 var router = express.Router();
 
-/* GET home page. */
+// GETS
+
 router.get('/', function(req, res) {
   res.render('index', { user: req.user });
 });
@@ -83,38 +84,49 @@ router.get('/help', function(req, res) {
 	});
 });
 
+// POSTS
+
 router.post('/create', function(req, res) {
-  console.log('Recieve recipe POST request:');
-  console.log(req.body);
+  validateUser(req, res, function(req, res) {
+    console.log('Received recipe POST request:');
+    console.log(req.body);
 
-  var ingredients = [];
-  for (i = 0; i < req.body.ingredients_ingredient.length; i++) {
-    ingredients[i] = {
-      ingredient: req.body.ingredients_ingredient[i],
-      amount: req.body.ingredients_amount[i],
-      unit: req.body.ingredients_unit[i]
-    };
-  }
-  var instructions = [];
-  for (i = 0; i < req.body.instructions_instruction.length; i++) {
-    instructions[i] = {
-      instruction: req.body.instructions_instruction[i]
-    };
-  }
+    var ingredients = [];
+    for (i = 0; i < req.body.ingredients_ingredient.length; i++) {
+      ingredients[i] = {
+        ingredient: req.body.ingredients_ingredient[i],
+        amount: req.body.ingredients_amount[i],
+        unit: req.body.ingredients_unit[i]
+      };
+    }
+    var instructions = [];
+    for (i = 0; i < req.body.instructions_instruction.length; i++) {
+      instructions[i] = {
+        instruction: req.body.instructions_instruction[i]
+      };
+    }
   
-  var recipe = new Recipe({
-    owner: req.user.username,
-    title: req.body.title,
-    description: req.body.description,
-    theme: req.body.theme,
-    ingredients: ingredients,
-    instructions: instructions,
-    notes: req.body.notes
-  });
+    var recipe = new Recipe({
+      owner: req.user.username,
+      title: req.body.title,
+      description: req.body.description,
+      theme: req.body.theme,
+      ingredients: ingredients,
+      instructions: instructions,
+      notes: req.body.notes
+    });
 
-  recipe.save(function(error) {
-    if (error) console.log('error in posting recipe' + error.message);
-    else res.redirect('/create');
+    recipe.save(function(error) {
+      if (error) console.log('error in posting recipe' + error.message);
+      else res.redirect('/create');
+    });
+  });
+});
+
+router.post('/search', function(req, res) {
+  validateUser(req, res, function(req, res) {
+    console.log('Received search POST request:');
+    console.log(req.body);
   });
 });
 
