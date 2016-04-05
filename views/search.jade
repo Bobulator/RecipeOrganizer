@@ -16,19 +16,19 @@ block content
       .row
         .col-md-9.col-md-offset-3.text-center Desciption of Page
       .row
-        form.form-horizontal
+        form#searchForm.form-horizontal(method='post')
           .form-group
             label.col-sm-3.control-label(for='inputTitle') Title
             .col-sm-9
-              input#inputTitle.form-control(type='input')
+              input#inputTitle.form-control(name='title', type='input')
           .form-group
             label.col-sm-3.control-label(for='inputIngredient') Ingredient
             .col-sm-9
-              input#inputIngredient.form-control(type='input')
+              input#inputIngredient.form-control(name='ingredient', type='input')
           .form-group
             label.col-sm-3.control-label(for='inputTheme') Theme
             .col-sm-9
-              input#inputTheme.form-control(type='input')
+              input#inputTheme.form-control(name='theme', type='input')
           .form-group
             .col-sm-offset-5.col-sm-4
               button.btn.btn-default.btn-block(type='submit') Search
@@ -38,3 +38,5 @@ block content
       .text-center Results go here
     // Right padding
     .col-md-1
+
+  script(src='/javascripts/search.js')
