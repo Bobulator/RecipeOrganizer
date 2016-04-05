@@ -92,19 +92,34 @@ router.post('/create', function(req, res) {
     console.log(req.body);
 
     var ingredients = [];
-    for (i = 0; i < req.body.ingredients_ingredient.length; i++) {
-      ingredients[i] = {
-        ingredient: req.body.ingredients_ingredient[i],
-        amount: req.body.ingredients_amount[i],
-        unit: req.body.ingredients_unit[i]
+    if (typeof req.body.ingredients_ingredient === 'string') {
+      ingredients[0] = {
+        ingredient: req.body.ingredients_ingredient,
+        amount: req.body.ingredients_amount,
+        unit: req.body.ingredients_unit
       };
+    } else {
+      for (i = 0; i < req.body.ingredients_ingredient.length; i++) {
+        ingredients[i] = {
+          ingredient: req.body.ingredients_ingredient[i],
+          amount: req.body.ingredients_amount[i],
+          unit: req.body.ingredients_unit[i]
+        };
+      }
     }
+
     var instructions = [];
-    for (i = 0; i < req.body.instructions_instruction.length; i++) {
-      instructions[i] = {
-        instruction: req.body.instructions_instruction[i]
+    if (typeof req.body.instructions_instruction === 'string') {
+      instructions[0] = {
+        instruction: req.body.instructions_instruction
       };
-    }
+    } else {
+      for (i = 0; i < req.body.instructions_instruction.length; i++) {
+        instructions[i] = {
+          instruction: req.body.instructions_instruction[i]
+        };
+      }
+   }
   
     var recipe = new Recipe({
       owner: req.user.username,
@@ -127,6 +142,16 @@ router.post('/search', function(req, res) {
   validateUser(req, res, function(req, res) {
     console.log('Received search POST request:');
     console.log(req.body);
+    Recipe.find({ 
+      owner: new RegExp(req.user.username),
+      title: new RegExp(req.body.title),
+      'ingredients.ingredient': new RegExp(req.body.ingredient),
+      theme: new RegExp(req.body.theme)
+    }, function(err, results) {
+      if (err) console.log('error' + error.message);
+      console.log(results);
+      res.send(results);
+    });
   });
 });
 
