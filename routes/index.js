@@ -1,6 +1,7 @@
 var express = require('express');
 var passport = require('passport');
 var mongoose = require('mongoose');
+var random = require('mongoose-simple-random');
 var LocalStrategy = require('passport-local');
 var Account = require('../models/account.js');
 var Recipe = require('../models/recipe.js');
@@ -55,8 +56,22 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/home', function(req, res) {
-	validateUser(req, res, function(req, res) {
-	  res.render('home', { user : req.user });
+  validateUser(req, res, function(req, res) {
+	  Recipe.count( { owner: req.user.username }, function(err, count) {
+      // Send some initial recipes to populate the home screen with
+      if (count <= 20) {
+        Recipe.find( { owner: req.user.username }, function(err, results) {
+          if (err) { console.log(err) }
+          res.render('home', { user : req.user, recipes : JSON.stringify(results) });
+        });
+      } else {
+        Recipe.plugin(random);
+        Recipe.findRandom( { user : req.user }, {}, function(err, results) {
+          if (err) { console.log(err) }
+          res.render('home', { user : req.user, recipes : JSON.stringify(results) });
+        });
+      }
+    });
 	});
 });
 
@@ -143,7 +158,7 @@ router.post('/search', function(req, res) {
     console.log('Received search POST request:');
     console.log(req.body);
     Recipe.find({ 
-      owner: new RegExp(req.user.username),
+      owner: req.user.username,
       title: new RegExp(req.body.title),
       'ingredients.ingredient': new RegExp(req.body.ingredient),
       theme: new RegExp(req.body.theme)
