@@ -10,11 +10,14 @@ block searchlink
       span.sr-only (current)
 
 block content
+  
+  h2
+    .col-md-2
+    | Advanced Search
+
   .modal-body.row
     // Left column
     .col-md-4.col-md-offset-1
-      .row
-        .col-md-9.col-md-offset-3.text-center Desciption of Page
       .row
         form#searchForm.form-horizontal(method='post')
           .form-group

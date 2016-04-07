@@ -8,3 +8,42 @@ block homelink
     a(href='/home')
       | Home
       span.sr-only (current)
+
+block content
+
+  script(type='text/javascript').
+    var userRecipes = !{recipes};
+
+  h2
+    .col-md-2
+    | Your Recipes
+
+  .modal-body.row
+    // Left column
+    .col-md-1.col-md-offset-1
+      .row
+        form#searchForm
+          .form-group
+            label.control-label(for='quickSearch') Quick Search
+            input#quickSearch.form-control(name='search', type='input')
+          .form-group
+            button.btn.btn-default.btn-block Search
+
+    // Central/Main column
+    .col-md-9
+      .row
+        .recipeCells
+          
+        #cellTemplate.hide
+          .col-md-3 
+            .thumbnail
+              img(src='images/320x150', alt='No Image')
+              .caption
+                h4.title Recipe Title!
+                p.description Description of A Recipe!!
+                //.row
+                //  h4.theme.pull-right Theme!
+      // Right padding
+      .col-md-1
+
+  script(src='/javascripts/home.js')
