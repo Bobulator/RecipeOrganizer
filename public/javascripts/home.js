@@ -15,7 +15,6 @@ function renderRecipes(recipes) {
                    .clone()
                    .removeClass('hide')
                    .removeAttr('id');
-    console.log($clone.find('*'));
     $clone.find('h4.title').html(recipes[i].title);
     $clone.find('p.description').html(recipes[i].description);
     $clone.find('theme').html(recipes[i].theme);
