@@ -57,21 +57,28 @@ router.get('/logout', function(req, res) {
 
 router.get('/home', function(req, res) {
   validateUser(req, res, function(req, res) {
-	  Recipe.count( { owner: req.user.username }, function(err, count) {
-      // Send some initial recipes to populate the home screen with
-      if (count <= 20) {
-        Recipe.find( { owner: req.user.username }, function(err, results) {
-          if (err) { console.log(err); }
-          res.render('home', { user : req.user, recipes : JSON.stringify(results) });
-        });
-      } else {
-        Recipe.plugin(random);
-        Recipe.findRandom( { user : req.user }, {}, function(err, results) {
-          if (err) { console.log(err); }
-          res.render('home', { user : req.user, recipes : JSON.stringify(results) });
-        });
-      }
-    });
+    if (Object.keys(req.query).length === 0) {
+	    Recipe.count( { owner: req.user.username }, function(err, count) {
+        // Send some initial recipes to populate the home screen with
+        if (count <= 20) {
+          Recipe.find( { owner: req.user.username }, function(err, results) {
+            if (err) { console.log(err); }
+            res.render('home', { user : req.user, recipes : JSON.stringify(results) });
+          });
+        } else {
+          Recipe.plugin(random);
+          Recipe.findRandom( { user : req.user }, {}, function(err, results) {
+            if (err) { console.log(err); }
+            res.render('home', { user : req.user, recipes : JSON.stringify(results) });
+          });
+        }
+      });
+    } else {
+      Recipe.find( { owner: req.user.username, title: new RegExp(req.query.search) }, function(err, results) {
+        if (err) { console.log(err); }
+        res.render('home', { user : req.user, recipes : JSON.stringify(results) });
+      });
+    }
 	});
 });
 
