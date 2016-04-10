@@ -74,7 +74,8 @@ router.get('/home', function(req, res) {
         }
       });
     } else {
-      Recipe.find( { owner: req.user.username, title: new RegExp(req.query.search) }, function(err, results) {
+      Recipe.find( { owner: req.user.username, 
+                     title: new RegExp(req.query.search, 'i') }, function(err, results) {
         if (err) { console.log(err); }
         res.render('home', { user : req.user, recipes : JSON.stringify(results) });
       });
@@ -176,9 +177,9 @@ router.post('/search', function(req, res) {
     console.log(req.body);
     Recipe.find({ 
       owner: req.user.username,
-      title: new RegExp(req.body.title),
-      'ingredients.ingredient': new RegExp(req.body.ingredient),
-      theme: new RegExp(req.body.theme)
+      title: new RegExp(req.body.title, 'i'),
+      'ingredients.ingredient': new RegExp(req.body.ingredient, 'i'),
+      theme: new RegExp(req.body.theme, 'i')
     }, function(err, results) {
       if (err) console.log('error' + error.message);
       console.log(results);
