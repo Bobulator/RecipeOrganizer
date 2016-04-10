@@ -3,7 +3,11 @@ $(document).ready(function() {
 
   $('.recipeCells').on('click', '.recipeImage', function() {
     console.log('clicked image!');
+    var url = 'getrecipe?recipeID=' + $(this).parent().parent().parent().attr('_id');
     console.log($(this).parent().parent().parent().attr('_id'));
+    $.getJSON(url, function(result) {
+      console.log(result);
+    });
   });
 });
 

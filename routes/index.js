@@ -61,13 +61,13 @@ router.get('/home', function(req, res) {
       // Send some initial recipes to populate the home screen with
       if (count <= 20) {
         Recipe.find( { owner: req.user.username }, function(err, results) {
-          if (err) { console.log(err) }
+          if (err) { console.log(err); }
           res.render('home', { user : req.user, recipes : JSON.stringify(results) });
         });
       } else {
         Recipe.plugin(random);
         Recipe.findRandom( { user : req.user }, {}, function(err, results) {
-          if (err) { console.log(err) }
+          if (err) { console.log(err); }
           res.render('home', { user : req.user, recipes : JSON.stringify(results) });
         });
       }
@@ -97,6 +97,16 @@ router.get('/help', function(req, res) {
 	validateUser(req, res, function(req, res) {
 	  res.render('help', { user : req.user });
 	});
+});
+
+router.get('/getrecipe', function(req, res) {
+  validateUser(req, res, function(req, res) {
+    Recipe.findOne( { '_id' : req.query.recipeID }, function(err, result) {
+      if (err) { console.log(err); }
+      console.log(result);
+      res.status(200).json(result);
+    });
+  });
 });
 
 // POSTS
