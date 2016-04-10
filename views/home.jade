@@ -34,10 +34,10 @@ block content
       .row
         .recipeCells
           
-        #cellTemplate.hide
+        #cellTemplate.hide(_id='temp')
           .col-md-3 
             .thumbnail
-              img(src='images/320x150', alt='No Image')
+              img.recipeImage(src='images/320x150', alt='No Image')
               .caption
                 h4.title Recipe Title!
                 p.description Description of A Recipe!!

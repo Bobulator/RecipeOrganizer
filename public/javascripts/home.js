@@ -1,5 +1,10 @@
 $(document).ready(function() {
   renderRecipes(userRecipes);
+
+  $('.recipeCells').on('click', '.recipeImage', function() {
+    console.log('clicked image!');
+    console.log($(this).parent().parent().parent().attr('_id'));
+  });
 });
 
 function renderRecipes(recipes) {
@@ -14,7 +19,7 @@ function renderRecipes(recipes) {
     var $clone = $template
                    .clone()
                    .removeClass('hide')
-                   .removeAttr('id');
+                   .attr('_id', recipes[i]._id);
     $clone.find('h4.title').html(recipes[i].title);
     $clone.find('p.description').html(recipes[i].description);
     $clone.find('theme').html(recipes[i].theme);
