@@ -91,7 +91,22 @@ router.get('/shopping', function(req, res) {
 
 router.get('/search', function(req, res) {
 	validateUser(req, res, function(req, res) {
-	  res.render('search', { user : req.user });
+	  if (Object.keys(req.query).length === 0) {
+      res.render('search', { user : req.user }); 
+    } else {
+      console.log('Received search request:');
+      console.log(req.query);
+      Recipe.find({ 
+        owner: req.user.username,
+        title: new RegExp(req.query.title, 'i'),
+        'ingredients.ingredient': new RegExp(req.query.ingredient, 'i'),
+        theme: new RegExp(req.query.theme, 'i')
+      }, function(err, results) {
+        if (err) console.log('error' + error.message);
+        console.log(results);
+        res.send(results);
+      });
+    }
 	});
 });
 
@@ -173,19 +188,7 @@ router.post('/create', function(req, res) {
 
 router.post('/search', function(req, res) {
   validateUser(req, res, function(req, res) {
-    console.log('Received search POST request:');
-    console.log(req.body);
-    Recipe.find({ 
-      owner: req.user.username,
-      title: new RegExp(req.body.title, 'i'),
-      'ingredients.ingredient': new RegExp(req.body.ingredient, 'i'),
-      theme: new RegExp(req.body.theme, 'i')
-    }, function(err, results) {
-      if (err) console.log('error' + error.message);
-      console.log(results);
-      res.send(results);
-    });
-  });
+     });
 });
 
 // Helper method to make sure users are logged in

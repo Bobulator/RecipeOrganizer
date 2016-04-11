@@ -19,7 +19,7 @@ block content
     // Left column
     .col-md-4.col-md-offset-1
       .row
-        form#searchForm.form-horizontal(method='post')
+        form#searchForm.form-horizontal
           .form-group
             label.col-sm-3.control-label(for='inputTitle') Title
             .col-sm-9
@@ -34,7 +34,7 @@ block content
               input#inputTheme.form-control(name='theme', type='input')
           .form-group
             .col-sm-offset-5.col-sm-4
-              button.btn.btn-default.btn-block(type='submit') Search
+              button#searchButton.btn.btn-default.btn-block(type='button') Search
 
     // Right column
     .col-md-6

@@ -1,5 +1,8 @@
 $(document).ready(function() {
-  $('#searchForm').submit(function() {
-    console.log($('input'));
+  $('#searchForm').on('click', '#searchButton', function() {
+    var query = $('#searchForm').serialize();
+    $.ajax({url: "?" + query, success: function(result) {
+      console.log(result);
+    }});
   });
 });
