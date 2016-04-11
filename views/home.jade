@@ -46,4 +46,25 @@ block content
       // Right padding
       .col-md-1
 
+  #recipeModal.modal
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') x
+          h3.modal-title Modal Title
+          p.modal-description Description
+          p.modal-theme Theme
+        .container
+        .modal-body
+          h4 Ingredients
+          ul.modal-ingredients
+          br
+          h4 Instructions
+          ol.modal-instructions(type='1')
+          h4 Notes
+          p.modal-notes Notes
+        .modal-footer
+          a.btn(href='#', data-dismiss='modal') Close
+          a.btn.btn-default(href='#') Save
+  
   script(src='/javascripts/home.js')
