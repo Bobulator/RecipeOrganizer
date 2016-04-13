@@ -38,8 +38,37 @@ block content
 
     // Right column
     .col-md-6
-      .text-center Results go here
+      .row
+        .recipeCells
+        #cellTemplate.hide(_id='temp')
+          .col-md-6
+            .thumbnail
+              img.recipeImage(src='images/320x150', alt='No Image')
+              .caption
+                h4.title Recipe Title
+                p.description Description
+                //.row
+                //  h4.theme.pull-right Theme!
     // Right padding
     .col-md-1
+  
+  #recipeModal.modal
+    .modal-dialog
+      .modal-header
+        button.close(type='button', data-dismiss'modal', aria-hidden='true') x
+        h3.modal-title Modal Title
+        p.modal-description Description
+        p.modal-them Theme
+      .container
+      .modal-body
+        h4 Ingredients
+        ul.modal-ingredients
+        br
+        h4 Instructions
+        ol.modal-instructions(type='1')
+        h4 Notes
+        p.modal-notes Notes
+      .modal-footer
+        a.btn(href='#', data-dismiss='modal') Close
 
   script(src='/javascripts/search.js')
