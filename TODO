@@ -14,3 +14,4 @@ Misc:
 [ ] Find a clean way to fit the theme of each recipe in their respective thumbnails on the home and advanced search views.
 [ ] Allow for multiple ingredients to be listed in the advanced search page.
 [ ] Add a button that will display a recipe in a new tab; add a printer friendly recipe page.
+[ ] Refactor the way recipe thumbnails are generated in the search and home screens since there is quite a bit of code duplication. Perhaps abstract the function that populates each thumbnail or even the thumbnail template.
